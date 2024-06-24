@@ -1,0 +1,59 @@
+{
+    "Version": "2012-10-17",
+    "Id": "SecureTransport",
+    "Statement": [
+        {
+            "Sid": "allowuseast1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::127311923021:root"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::881119752654-elbloggingbucketnew-us-east-1/*"
+        },
+        {
+            "Sid": "allowuseast2",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::033677994240:root"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::881119752654-elbloggingbucketnew-us-east-1/*"
+        },
+        {
+            "Sid": "AWSLogDeliveryWrite",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "delivery.logs.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::881119752654-elbloggingbucketnew-us-east-1/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        },
+        {
+            "Sid": "AWSLogDeliveryAclCheck",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "delivery.logs.amazonaws.com"
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::881119752654-elbloggingbucketnew-us-east-1"
+        },
+        {
+            "Sid": "AutoSecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "*",
+            "Resource": "arn:aws:s3:::881119752654-elbloggingbucketnew-us-east-1/*",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        }
+    ]
+}
