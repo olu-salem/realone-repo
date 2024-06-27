@@ -34,5 +34,5 @@ override.tf.json
 terraform.rc
 
 .terraform.lock.hcl
-Sonarqube/.terraform.lock.hcl
-kubernetes/.terraform.lock.hcl
+.terraform.lock.hcl
+.terraform.lock.hcl
