@@ -106,3 +106,4 @@ echo "This is the default password: $(sudo cat /var/lib/jenkins/secrets/initialA
 # Print the completion message
 echo 'Jenkins is installed'
 echo 'This is the default password: ' $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
+sudo systemctl restart docker
